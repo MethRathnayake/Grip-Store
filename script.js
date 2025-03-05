@@ -569,3 +569,82 @@ function advanceSearch(x) {
   r.open("POST", "advancedSearchProcess.php", true);
   r.send(f);
 }
+
+function loadCart() {
+
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+    if (r.readyState == 4 && r.status == 200) {
+      var response = r.responseText;
+      // alert(response);
+      document.getElementById("cartBody").innerHTML = response;
+    }
+  };
+
+  r.open("POST", "loadCartProcess.php", true);
+  r.send();
+}
+
+function incrementCartQty(x) {
+  var cartId = x;
+  var qty = document.getElementById("qty" + x);
+  //calculate + 1
+  var newQty = parseInt(qty.value) + 1;
+
+  var f = new FormData();
+  f.append("c", cartId);
+  f.append("q", newQty);
+
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+    if (r.readyState == 4 && r.status == 200) {
+      var response = r.responseText;
+
+      if (response == "success") {
+        qty.value = parseInt(qty.value) + 1;
+        loadCart();
+      } else {
+        swal("Oops", response, "error");
+      }
+    }
+  };
+
+  r.open("POST", "cartQtyUpdateProcess.php", "true");
+  r.send(f);
+}
+
+function decrementCartQty(x) {
+  var cartId = x;
+  var qty = document.getElementById("qty" + x);
+
+  // Calculate new quantity
+  var newQty = parseInt(qty.value) - 1;
+
+  var f = new FormData();
+  f.append("c", cartId);
+  f.append("q", newQty);
+
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+    if (r.readyState == 4 && r.status == 200) {
+      var response = r.responseText;
+
+      if (response == "success") {
+        if (qty.value == 1) {
+          removeCart(cartId);
+        } else {
+          qty.value = parseInt(qty.value) - 1;
+          loadCart();
+        }
+      } else {
+        swal("Oops", response, "error");
+      }
+    }
+  };
+
+  r.open("POST", "cartQtyUpdateProcess.php", "true");
+  r.send(f);
+}
