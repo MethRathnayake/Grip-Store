@@ -1,0 +1,38 @@
+.login_button{
+
+    background-color: #007BFF;
+}
+
+.icon-size{
+    height: 100px;
+    width: 100px;
+}
+
+.signin_box{
+    width: 450px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px;
+    border-radius: 10px;
+    
+}
+
+
+
+
+.eee{
+    background-color: white;
+}
+
+
+.center-icon {
+    display: block;
+    margin: 20px auto; /* Centers the image horizontally and adds spacing */
+}
+
+.adminUser{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+}
+
