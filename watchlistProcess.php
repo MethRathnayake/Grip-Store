@@ -44,7 +44,7 @@ if ($num == 0) {
     <!-- Remove Button -->
     <div class="mt-2">
             <input type="hidden" id="stock_id" value="<?php echo $d['stock_id']; ?>">
-            <button  class="w-full py-2 text-white rounded-md bg-red-600 hover:bg-red-700" onclick="removeWatchlist();">
+            <button  class="w-full py-2 text-white rounded-md bg-red-600 hover:bg-red-700" onclick="removeWatchlist(<?php echo $d['stock_id']; ?>);">
                 Remove from Watchlist
             </button>
 

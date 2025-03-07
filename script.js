@@ -698,6 +698,39 @@ function watchlist() {
   r.send();
 }
 
-function removeWatchlist(){
-  
+function removeWatchlist(x){
+  var stock_id = x;
+  var f = new FormData();
+  f.append("s" , stock_id);
+
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+    if (r.readyState == 4 && r.status == 200) {
+      var response = r.responseText;
+      if (response == "done") {
+        Swal.fire({
+          title: "Success",
+          text: "Removed from your watchlist",
+          icon: "success",
+          background: "#1e1e1e",
+          color: "#ffffff",
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+        }).then(() => {
+          window.location.reload();
+        });
+
+      }else{
+        alert("Something Went Wrong");
+
+      }
+      
+    }
+  };
+
+  r.open("POST", "watchlistRemove.php", true);
+
+  r.send(f);
+
 }
