@@ -24,8 +24,12 @@
             <img src="./Resorces/bg.jpeg">
         </div>
 
+       
+
         <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-            <img class="icon-size mx-auto" src="./Resorces/icon.ico" alt="Your Company">
+            <img class="icon-size mx-auto" id="logo" src="./Resorces/icon.ico" alt="Your Company">
+
+            
 
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account</h2>
@@ -84,7 +88,7 @@
             </div>
             <p class="mt-10 text-center text-sm/6 text-gray-500">
                 Don't Have an Account?
-                <a class="font-semibold text-blue-600 hover:text-blue-500" onclick="changeView();">Sign up</a>
+                <a class="font-semibold text-blue-600 hover:text-blue-500 cursor-pointer" onclick="changeView();">Sign up</a>
             </p>
 
 
@@ -116,7 +120,7 @@
 
         <div class="space-y-6">
             <!-- Logo -->
-            <img class="icon-size mx-auto max-w-full w-24" src="./Resorces/icon.ico" alt="Your Company">
+            <img class="icon-size mx-auto " src="./Resorces/icon.ico" alt="Your Company">
             <!-- Label -->
             <h2 class="mt-6 text-center text-xl md:text-2xl font-bold tracking-tight text-gray-900">
                 Create an Account | Grip Technologies
@@ -187,7 +191,7 @@
         </div>
         <p class="mt-10 text-center text-sm text-gray-500">
             Don't Have an Account?
-            <a class="font-semibold text-blue-600 hover:text-blue-500" onclick="changeView();">Sign in</a>
+            <a class="font-semibold text-blue-600 hover:text-blue-500 cursor-pointer" onclick="changeView();">Sign in</a>
         </p>
     </div>
     </div>

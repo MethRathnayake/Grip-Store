@@ -648,3 +648,52 @@ function decrementCartQty(x) {
   r.open("POST", "cartQtyUpdateProcess.php", "true");
   r.send(f);
 }
+
+function removeCart(x) {
+  var cartId = x;
+
+  swal({
+    title: "Are you sure?",
+    text: "Do you want to remove this product from Cart?",
+    icon: "warning",
+    buttons: ["Cancel", "Yes, remove it"],
+    dangerMode: true,
+  }).then((willRemove) => {
+    if (willRemove) {
+      var f = new FormData();
+      f.append("c", cartId);
+
+      var r = new XMLHttpRequest();
+
+      r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+          var response = r.responseText;
+          swal("Good job!", response, "success").then(() => {
+            window.location.reload();
+          });
+        }
+      };
+
+      r.open("POST", "removeCartProcess.php", true);
+      r.send(f);
+    }
+  });
+}
+
+function watchlist() {
+
+
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+    if (r.readyState == 4 && r.status == 200) {
+      var response = r.responseText;
+      document.getElementById("pid").innerHTML = response;
+      
+    }
+  };
+
+  r.open("POST", "watchlistProcess.php", true);
+
+  r.send();
+}

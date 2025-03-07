@@ -64,7 +64,9 @@ if ($num > 0) {
                     <button class="btn btn-danger btn-sm" onclick="removeCart('<?php echo $d['cart_id'] ?>');">X</button>
                     <p class="mb-0 fs-5 fw-bold"> Rs: <?php echo $total ?> </p>
                 </div>
+                
             </div>
+
         
 
 
