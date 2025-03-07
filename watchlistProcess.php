@@ -22,22 +22,34 @@ if ($num == 0) {
         $d = $rs->fetch_assoc();
 
 ?>
-
-        <div class="group relative">
-            <img src="<?php echo $d["path"];  ?>" alt="" class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80">
-            <div class="mt-4 flex justify-between">
-                <div>
-                    <h3 class="text-sm text-gray-700">
-                        <a href="singleProductView.php?s= <?php echo $d["stock_id"]; ?>">
-                            <span aria-hidden="true" class="absolute inset-0"></span>
-                            <?php echo $d["product_name"]; ?>
-                        </a>
-                    </h3>
-                    <p class="mt-1 text-sm text-gray-500"><?php echo $d["product_type"]; ?></p>
-                </div>
-                <p class="text-sm font-medium text-gray-900">Rs.<?php echo $d["price"]; ?></p>
-            </div>
+<div class="group relative">
+    <!-- Image Link -->
+    <a href="singleProductView.php?s=<?php echo $d['stock_id']; ?>" class="block">
+        <img src="<?php echo $d['path']; ?>" alt="" class="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80">
+    </a>
+    
+    <div class="mt-4 flex justify-between">
+        <!-- Product Name Link -->
+        <div>
+            <h3 class="text-sm text-gray-700">
+                <a href="singleProductView.php?s=<?php echo $d['stock_id']; ?>" class="block">
+                <?php echo $d['product_name']; ?>
+                </a>
+            </h3>
+            <p class="mt-1 text-sm text-gray-500"><?php echo $d['product_type']; ?></p>
         </div>
+        <p class="text-sm font-medium text-gray-900">Rs.<?php echo $d['price']; ?></p>
+    </div>
+
+    <!-- Remove Button -->
+    <div class="mt-2">
+            <input type="hidden" id="stock_id" value="<?php echo $d['stock_id']; ?>">
+            <button  class="w-full py-2 text-white rounded-md bg-red-600 hover:bg-red-700" onclick="removeWatchlist();">
+                Remove from Watchlist
+            </button>
+
+    </div>
+</div>
 
 
 <?php

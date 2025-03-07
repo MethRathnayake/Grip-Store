@@ -15,7 +15,6 @@
         <div class="hidden sm:flex space-x-4 ml-6">
           <a href="index.php" class="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium">Home</a>
           <a href="watchlist.php" class="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium">Watch List</a>
-          <a href="#" class="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium">Payment History</a>
           <a href="cart.php" class="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium"><i class="fas fa-shopping-cart"></i> Cart</a>
         </div>
       </div>
@@ -34,8 +33,8 @@
 
           <!-- Profile dropdown for desktop (hidden by default) -->
           <div id="profile-menu-desktop" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
-            <a href="#" class="block text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium">Profile</a>
-            <a href="#" class="block text-red-700 hover:bg-red-100 px-3 py-2 rounded-md text-sm font-medium">Sign Out <i class="fa-solid fa-right-from-bracket"></i></a>
+            <a href="profile.php" class="block text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium">Profile</a>
+            <a href="userlogout.php" class="block text-red-700 hover:bg-red-100 px-3 py-2 rounded-md text-sm font-medium">Sign Out <i class="fa-solid fa-right-from-bracket"></i></a>
           </div>
         </div>
       </div>
@@ -46,14 +45,13 @@
   <div class="hidden sm:hidden px-2 pt-2 pb-3" id="mobile-menu">
     <a href="index.php" class="block text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium">Home</a>
     <a href="watchlist.php" class="block text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium">Watch List</a>
-    <a href="#" class="block text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium">Payment History</a>
     <a href="cart.php" class="block text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-shopping-cart"></i> Cart</a>
   </div>
 
   <!-- Profile menu (mobile only, hidden by default) -->
   <div class="hidden sm:hidden px-2 pt-2 pb-3" id="profile-menu-mobile">
-    <a href="#" class="block text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium">Profile</a>
-    <a href="#" class="block text-red-700 hover:bg-red-100 px-3 py-2 rounded-md text-base font-medium">Sign Out <i class="fa-solid fa-right-from-bracket"></i></a>
+    <a href="profile.php" class="block text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium">Profile</a>
+    <a href="userlogout.php" class="block text-red-700 hover:bg-red-100 px-3 py-2 rounded-md text-base font-medium">Sign Out <i class="fa-solid fa-right-from-bracket"></i></a>
   </div>
 </nav>
 

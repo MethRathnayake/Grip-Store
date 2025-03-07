@@ -697,3 +697,7 @@ function watchlist() {
 
   r.send();
 }
+
+function removeWatchlist(){
+  
+}
