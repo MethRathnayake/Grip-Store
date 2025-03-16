@@ -21,7 +21,7 @@
 
       <!-- User menu -->
       <div class="flex items-center space-x-4">
-        <button class="p-1 text-gray-500 hover:text-gray-700 focus:ring-2 focus:ring-blue-500">
+        <button href="userOrders.php" class="p-1 text-gray-500 hover:text-gray-700 focus:ring-2 focus:ring-blue-500">
         Orders <i class="fa-solid fa-truck-fast"></i>
         </button>
 
