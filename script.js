@@ -35,7 +35,6 @@ function signin() {
       var response = r.responseText;
 
       if (response == "success") {
-        alert("Login Successful");
         window.location = "index.php";
       } else {
         document.getElementById("msgDiv").className = "d-block";
@@ -727,10 +726,265 @@ function removeWatchlist(x){
       }
       
     }
-  };
+  }
 
   r.open("POST", "watchlistRemove.php", true);
 
   r.send(f);
 
+}
+
+function increaseQty() {
+  var qty = document.getElementById('qty');
+  qty.value = parseInt(qty.value) + 1;
+}
+
+function decreaseQty() {
+  var qty = document.getElementById('qty');
+  if (qty.value > 1) {
+    qty.value = parseInt(qty.value) - 1;
+  }
+}
+
+function addtowatchlist(stockid) {
+  var stock_id = stockid;
+  var f = new FormData();
+  f.append("s" , stock_id);
+
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+    if (r.readyState == 4 && r.status == 200) {
+      var response = r.responseText;
+      if (response == "done") {
+        swal({
+          title: "Success!",
+          text: "Added to your Watchlist",
+          icon: "success",
+          button: "OK!",
+        });
+          
+      } else if (response == "already have") {
+        swal({
+          title: "Failed!",
+          text: "Already in your Watchlist!",
+          icon: "warning",
+          button: "OK!",
+        });
+      } else {
+          alert(response);
+      }
+  }
+  
+  }
+
+  r.open("POST", "addToWatchlistProcess.php", true);
+
+  r.send(f);
+
+}
+
+function updateProfile(){
+  var firstName = document.getElementById("firstName").value;
+  var lastName = document.getElementById("lastName").value;
+  var username = document.getElementById("username").value;
+  var mobile = document.getElementById("mobile").value;
+  var password = document.getElementById("password").value;
+  var confirmPassword = document.getElementById("confirmPassword").value;
+  var address = document.getElementById("address").value;
+  var city = document.getElementById("city").value;
+  var postalCode = document.getElementById("postalCode").value;
+  var pro_img = document.getElementById("file-input");
+
+  // alert(pro_img);
+  // alert(firstName);
+  // alert(lastName);
+  // alert(username);
+  // alert(mobile);
+  // alert(password);
+  // alert(confirmPassword);
+  // alert(address);
+  // alert(city);
+  // alert(postalCode);
+
+  var f = new FormData();
+  f.append("f" , firstName);
+  f.append("l" , lastName);
+  f.append("u" , username);
+  f.append("m" , mobile);
+  f.append("p" , password);
+  f.append("c" , confirmPassword);
+  f.append("a" , address);
+  f.append("city" , city);
+  f.append("po" , postalCode);
+  f.append("img" , pro_img.files[0]);
+
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function (){
+    if (r.readyState == 4 && r.status == 200) {
+      var response = r.responseText;
+
+      // alert(response);
+
+      if (response == "success") {
+        swal("Good job!", "Profile Updated Successfully!", "success").then(() => {
+          window.location.reload();
+        });
+      } else {
+        document.getElementById("alertDiv").className = "d-block";
+        document.getElementById("msgDiv").innerHTML = response;
+      }
+
+    }
+
+   
+  }
+
+
+  r.open("POST", "profileProcess.php", true);
+  r.send(f);
+
+
+
+}
+
+function addtocart(x){
+  var stock_id = x;
+  var qty = document.getElementById("qty").value;
+  var f = new FormData();
+  f.append("s" , stock_id);
+  f.append("q" , qty);
+
+
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+    if (r.readyState == 4 && r.status == 200) {
+      var response = r.responseText;
+      if (response == "success") {
+        swal("Good job!", "Added to Cart Successfully!", "success")
+      }else{
+        alert(response);
+      }
+  }
+  
+  }
+
+  r.open("POST", "addToCartProcess.php", true);
+
+  r.send(f);  
+}
+
+function loadOrders(){
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+    if (r.readyState == 4 && r.status == 200) {
+      var response = r.responseText;
+      document.getElementById("order_body").innerHTML = response;
+    }
+  };
+
+  r.open("POST", "loadOrdersProcess.php", true);
+  r.send();
+}
+
+function checkout(){
+  var f = new FormData();
+  f.append("c", true);
+
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+    if (r.readyState == 4 && r.status == 200) {
+      var response = r.responseText;
+
+      alert(response);
+      // if (response.status == "success") {
+      //   window.location.href = response.checkout_url;
+      // } else {
+      //   console.error("Error: , response.message");
+      //   alert("Error:", response.message);
+      // }
+    }
+  };
+
+  r.open("POST", "paymentProcess.php", true);
+  r.send(f);
+}
+
+function paymentprocess() {
+
+  var first_name = document.getElementById("fn").value;
+  var last_name = document.getElementById("ln").value;
+  var amount = document.getElementById("amount").value;
+  amount = parseInt(amount)
+
+
+var f = new FormData();
+
+f.append("a" , amount);
+
+
+var r = new XMLHttpRequest();
+
+r.onreadystatechange = function () {
+  if (r.readyState == 4 && r.status == 200) {
+    var response = r.responseText;
+    var obj = JSON.parse(response);
+
+    // Payment completed. It can be a successful failure.
+    payhere.onCompleted = function onCompleted(orderId) {
+      console.log("Payment completed. OrderID:" + orderId);
+      // Note: validate the payment and show success or failure page to the customer
+    };
+
+    // Payment window closed
+    payhere.onDismissed = function onDismissed() {
+      // Note: Prompt user to pay again or show an error page
+      console.log("Payment dismissed");
+    };
+
+    // Error occurred
+    payhere.onError = function onError(error) {
+      // Note: show an error page
+      console.log("Error:" + error);
+    };
+
+    // Put the payment variables here
+    var payment = {
+      sandbox: true,
+      merchant_id: "1228760", // Replace your Merchant ID
+      return_url: "http://localhost/payhere/payhere.html", // Important
+      cancel_url: "http://localhost/payhere/payhere.html", // Important
+      notify_url: "http://sample.com/notify",
+      order_id: obj["order_id"],
+      items: "Chuula",
+      amount: obj["amount"],
+      currency: obj["currency"],
+      hash: obj["hash"], // *Replace with generated hash retrieved from backend
+      first_name: first_name,
+      last_name: last_name,
+      email: "meth.rathnayake2007@gmail.com",
+      phone: "0705397355",
+      address: "No.107/6/1, Gongithota Road , Endermaulla",
+      city: "Wattala",
+      country: "Sri Lanka",
+      delivery_address: "No.107/6/1, Gongithota Road , Endermaulla",
+      delivery_city: "Wattala",
+      delivery_country: "Sri Lanka",
+      custom_1: "",
+      custom_2: "",
+    };
+
+    payhere.startPayment(payment);
+    
+  }
+};
+
+
+
+r.open("POST", "paymentprocess.php", true);
+r.send(f);
 }

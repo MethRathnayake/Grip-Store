@@ -1,3 +1,4 @@
+
 <nav class="bg-white border-b border-gray-200">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
@@ -21,14 +22,14 @@
 
       <!-- User menu -->
       <div class="flex items-center space-x-4">
-        <button href="userOrders.php" class="p-1 text-gray-500 hover:text-gray-700 focus:ring-2 focus:ring-blue-500">
+        <a href="orders.php" class="p-1 text-gray-500 hover:text-gray-700 focus:ring-2 focus:ring-blue-500">
         Orders <i class="fa-solid fa-truck-fast"></i>
-        </button>
+        </a>
 
         <!-- Profile button (visible on all screens) -->
         <div class="relative">
           <button id="profile-button" class="flex items-center rounded-full focus:ring-2 focus:ring-blue-500">
-            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User Menu">
+            <img class="h-8 w-8 rounded-full" src="<?php $user["pro_path"] ?>" alt="User Menu">
           </button>
 
           <!-- Profile dropdown for desktop (hidden by default) -->

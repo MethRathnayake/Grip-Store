@@ -63,10 +63,16 @@ include "navbar.php";
       <p class="text-muted"><?php echo $d["description"] ?>.</p>
 
       <h3 class="text-success mt-3 display-5">Rs.<?php echo number_format($d["price"]); ?></h3>
+
+      <div class="d-flex align-items-center my-3">
+  <button class="btn btn-outline-secondary" type="button" onclick="decreaseQty()">-</button>
+  <input type="number" class="form-control text-center" id="qty" value="1" min="1" style="width: 60px;">
+  <button class="btn btn-outline-secondary" type="button" onclick="increaseQty()">+</button>
+</div>
       
        <!-- Product Info (Brand, Category, Product Type, Color) -->
 <div class="my-4">
-  <h5 class="text-center mb-3">Product Information</h5>
+  <strong><h5 class="text-center mb-3 text-uppercase">Product Information</h5></strong>
   <ul class="list-group list-group-flush">
     <li class="list-group-item d-flex justify-content-between align-items-center">
       <strong>Brand:</strong>
@@ -90,17 +96,18 @@ include "navbar.php";
       
       <!-- Buttons (Add to Watchlist, Buy Now, Add to Cart) -->
       <div class="d-grid gap-2 d-md-block my-4 pt-3">
-        <button class="btn btn-outline-primary btn-lg">Add to Watchlist</button>
-        <button class="btn btn-success btn-lg">Buy Now</button>
-        <button class="btn btn-primary btn-lg">Add to Cart</button>
+        <button class="btn btn-outline-primary btn-lg" onclick="addtowatchlist(<?php echo $stock_id ?>);">Add to Watchlist</button>
+        <button class="btn btn-success btn-lg" onclick="">Buy Now</button>
+        <button class="btn btn-primary btn-lg" onclick="addtocart(<?php echo $stock_id ?>)">Add to Cart</button>
       </div>
     </div>
   </div>
 </div>
 
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

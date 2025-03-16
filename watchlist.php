@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (isset($_SESSION["u"])) {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,3 +41,11 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>
+
+<?php
+}else{
+    include "loginalert.php";
+}
+
+
+?>

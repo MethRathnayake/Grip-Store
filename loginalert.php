@@ -27,7 +27,7 @@
         <h2 class="mb-3">Login Required</h2>
         <p class="mb-3">You need to log in to access your Watchlist, Profile, and Orders.</p>
         <a href="login.php" class="btn btn-primary">Login Now</a>
-        <a href="login.php" class="btn btn-primary">Home page</a>
+        <a href="index.php" class="btn btn-primary">Home page</a>
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
